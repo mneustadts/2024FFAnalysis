@@ -1,3 +1,4 @@
+-- Create a consolidated ADP table for each site
 SELECT 
     e.Player AS Player,
     e.ADP AS ESPN_ADP,
@@ -11,7 +12,7 @@ LEFT JOIN
 LEFT JOIN 
     Roto_Data r ON e.Player = r.Player;
 
-	
+-- Now create a Position rankings table to get the variance of	
 WITH ESPN_Rankings AS (
     SELECT 
         Player,
@@ -41,3 +42,31 @@ LEFT JOIN
     NFL_Rankings n ON e.Player = n.Player
 LEFT JOIN 
     Roto_Rankings r ON e.Player = r.Player;
+
+-- Finally create a table for the actual rankings from the acutal stat table	
+WITH PositionInfo AS (
+    SELECT 
+        f.Player AS Player,
+        p.Position AS Position,
+        f.PPRpts AS PPRpts
+    FROM 
+        FD_Actuals_ppr f
+    JOIN 
+        PlayerInfo p ON f.Player = p.Player
+),
+RankedPositions AS (
+    SELECT 
+        Player,
+        Position,
+        PPRpts,
+        Position || CAST(ROW_NUMBER() OVER (PARTITION BY Position ORDER BY PPRpts DESC) AS TEXT) AS Act_Rankings
+    FROM 
+        PositionInfo
+)
+SELECT 
+    Player,
+    Position,
+    PPRpts,
+    Act_Rankings
+FROM 
+    RankedPositions;
