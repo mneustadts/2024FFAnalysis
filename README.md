@@ -26,6 +26,8 @@ Created a 4-page Power BI report with key insights, including:
   Scatter plot with trendlines: Showcasing how closely players performed to their projected ADP.
   Player performance table: Highlighting pre- and post-season rankings, total points, and points per game (PPG), with a        focus on the impact of missed games.
   Top/Bottom 5 cards: Identifying players who significantly over- or underperformed their ADP by fantasy football site.
+#### Page Preview
+![Consensus Page](./ConPic.png)
   
 ## Key Insights
 
