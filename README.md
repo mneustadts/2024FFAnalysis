@@ -81,3 +81,6 @@ To maintain focus, some data was excluded from the analysis:
 Players who played fewer than 8 games (e.g., Christian McCaffrey, Rashee Rice) to avoid skewing insights.
 Exceptional cases, such as Kareem Hunt, whose unexpected production resulted from unique circumstances.
 This project reflects my passion for data analytics and sports, showcasing the potential of leveraging SQL and Power BI for actionable insights.
+
+### Project Files
+- [PowerBi Report for FF2024 (PowerPoint)](./FF2024Analysis.pptx)
